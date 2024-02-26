@@ -1,4 +1,4 @@
-name: social_media
+name: profile_page
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.2.6 <4.0.0'
 
 dependencies:
+  uuid: ^4.3.2
   flutter:
     sdk: flutter
 
@@ -17,3 +18,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/logos/
+    - assets/profile_pics/
+    - assets/posts/
