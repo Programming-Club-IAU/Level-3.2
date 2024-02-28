@@ -49,8 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
       extendBody: true,
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
-        selectedItemColor: Colors.red, // Change this to your desired color
-        unselectedItemColor: Colors.grey, // Change this to your desired color
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
         onTap: onTabTapped,
         currentIndex: _currentIndex,
         items: const [

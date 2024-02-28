@@ -38,12 +38,6 @@ class _HomeScreenState extends State<HomeScreen>
             : const Text('Home'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // Handle settings button press
-            },
-          ),
-          IconButton(
             icon: Icon(_isSearching ? Icons.close : Icons.search),
             onPressed: () {
               setState(() {

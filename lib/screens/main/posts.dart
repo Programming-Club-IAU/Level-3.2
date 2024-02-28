@@ -1,51 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/constants/constants.dart';
 
 class Post {
   final String profilePic;
   final String username;
   final String text;
+  int likesCount;
+  int favoritesCount;
+  int repliesCount;
 
-  Post({required this.profilePic, required this.username, required this.text});
+  Post({
+    required this.profilePic,
+    required this.username,
+    required this.text,
+    this.likesCount = 0,
+    this.favoritesCount = 0,
+    this.repliesCount = 0,
+  });
 }
 
 List<Post> forYouPosts = [
   Post(
-      profilePic: 'assets/images/profile1.jpg',
-      username: 'user1',
+      profilePic: 'https://i.pravatar.cc/150?img=68',
+      username: '@user1',
       text: 'This is a post from user1'),
   Post(
-      profilePic: 'assets/images/profile2.jpg',
-      username: 'user2',
+      profilePic: 'https://i.pravatar.cc/150?img=4',
+      username: '@user2',
       text: 'This is a post from user2'),
   Post(
-      profilePic: 'assets/images/profile3.jpg',
-      username: 'user3',
+      profilePic: 'https://i.pravatar.cc/150?img=62',
+      username: '@user3',
       text: 'This is a post from user3'),
 ];
 
 List<Post> followingPosts = [
   Post(
-      profilePic: 'assets/images/profile4.jpg',
-      username: 'user4',
+      profilePic: 'https://i.pravatar.cc/150?img=59',
+      username: '@user4',
       text: 'This is a post from user4'),
   Post(
-      profilePic: 'assets/images/profile5.jpg',
-      username: 'user5',
+      profilePic: 'https://i.pravatar.cc/150?img=10',
+      username: '@user5',
       text: 'This is a post from user5'),
   Post(
-      profilePic: 'assets/images/profile6.jpg',
-      username: 'user6',
+      profilePic: 'https://i.pravatar.cc/150?img=5',
+      username: '@user6',
       text: 'This is a post from user6'),
 ];
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
   final Post post;
 
   PostCard({required this.post});
 
   @override
+  _PostCardState createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+  @override
   Widget build(BuildContext context) {
     return Card(
+      color: Constants.postColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
@@ -55,15 +72,69 @@ class PostCard extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: AssetImage(post.profilePic),
+                Expanded(
+                  flex: 2,
+                  child: CircleAvatar(
+                    radius: Constants.postSize / 2,
+                    backgroundImage: NetworkImage(widget.post.profilePic),
+                  ),
                 ),
-                SizedBox(width: 8.0),
-                Text(post.username),
+                Expanded(
+                  flex: 3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.post.username),
+                      Text(widget.post.text),
+                    ],
+                  ),
+                ),
               ],
             ),
-            SizedBox(height: 8.0),
-            Text(post.text),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.favorite),
+                      onPressed: () {
+                        setState(() {
+                          widget.post.likesCount++;
+                        });
+                      },
+                    ),
+                    Text('${widget.post.likesCount}'),
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.star),
+                      onPressed: () {
+                        setState(() {
+                          widget.post.favoritesCount++;
+                        });
+                      },
+                    ),
+                    Text('${widget.post.favoritesCount}'),
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.chat_bubble),
+                      onPressed: () {
+                        setState(() {
+                          widget.post.repliesCount++;
+                        });
+                      },
+                    ),
+                    Text('${widget.post.repliesCount}'),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),
