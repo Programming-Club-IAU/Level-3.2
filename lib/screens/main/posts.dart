@@ -49,10 +49,26 @@ List<Post> followingPosts = [
       text: 'This is a post from user6'),
 ];
 
+// This is a list of posts that the user has made
+List<Post> myPosts = [
+  Post(
+      profilePic: 'https://i.pravatar.cc/150?img=52',
+      username: '@myUsername',
+      text: 'This is my first post'),
+  Post(
+      profilePic: 'https://i.pravatar.cc/150?img=52',
+      username: '@myUsername',
+      text: 'This is my second post'),
+  Post(
+      profilePic: 'https://i.pravatar.cc/150?img=52',
+      username: '@myUsername',
+      text: 'This is my third post'),
+];
+
 class PostCard extends StatefulWidget {
   final Post post;
 
-  PostCard({required this.post});
+  const PostCard({super.key, required this.post});
 
   @override
   _PostCardState createState() => _PostCardState();
@@ -97,7 +113,7 @@ class _PostCardState extends State<PostCard> {
                 Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.favorite),
+                      icon: const Icon(Icons.favorite),
                       onPressed: () {
                         setState(() {
                           widget.post.likesCount++;
@@ -110,7 +126,7 @@ class _PostCardState extends State<PostCard> {
                 Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.star),
+                      icon: const Icon(Icons.star),
                       onPressed: () {
                         setState(() {
                           widget.post.favoritesCount++;
@@ -123,7 +139,7 @@ class _PostCardState extends State<PostCard> {
                 Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.chat_bubble),
+                      icon: const Icon(Icons.chat_bubble),
                       onPressed: () {
                         setState(() {
                           widget.post.repliesCount++;

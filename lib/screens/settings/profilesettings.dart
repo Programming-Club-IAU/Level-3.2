@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '/constants/constants.dart';
 
 class ProfileSettingsScreen extends StatelessWidget {
-  const ProfileSettingsScreen(String s, {super.key});
+  const ProfileSettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
