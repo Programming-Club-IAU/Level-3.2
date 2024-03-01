@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/constants/constants.dart';
-import 'package:social_media/screens/settings/profilesettings.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +21,15 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.person, color: Constants.iconColor),
             title: const Text('Profile Settings',
+                style: TextStyle(color: Constants.textColor)),
+            trailing:
+                const Icon(Icons.arrow_forward_ios, color: Constants.iconColor),
+            onTap: () {},
+          ),
+          ListTile(
+            leading:
+                const Icon(Icons.display_settings, color: Constants.iconColor),
+            title: const Text('Display Settings',
                 style: TextStyle(color: Constants.textColor)),
             trailing:
                 const Icon(Icons.arrow_forward_ios, color: Constants.iconColor),

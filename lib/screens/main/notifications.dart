@@ -7,8 +7,7 @@ class NotificationItem extends StatelessWidget {
   final String message;
 
   const NotificationItem(
-      {Key? key, required this.avatarUrl, required this.message})
-      : super(key: key);
+      {super.key, required this.avatarUrl, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class NotificationItem extends StatelessWidget {
 }
 
 class NotificationsScreen extends StatelessWidget {
-  const NotificationsScreen({Key? key}) : super(key: key);
+  const NotificationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
